@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Corrida</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="800" height="600"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Carregar os recursos
+    const carImage = new Image();
+    carImage.src = 'car.png';
+    const roadImage = new Image();
+    roadImage.src = 'road.png';
+
+    // Definir as variáveis do jogo
+    let carSpeed = 0;
+    let roadSpeed = 0;
+
+    // Loop do jogo
+    function update() {
+      // Atualizar o jogo
+      carSpeed += 0.1;
+      roadSpeed += 0.01;
+
+      // Desenhar o jogo
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(roadImage, 0, 0);
+      ctx.drawImage(carImage, 100, 100);
+      requestAnimationFrame(update);
+    }
+
+    update();
+  </script>
+</body>
+</html>
